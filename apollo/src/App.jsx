@@ -7,6 +7,7 @@ import {
   gql,
 } from "@apollo/client";
 import { Home, Info } from "./components";
+import "./App.css";
 
 const App = () => {
   const client = new ApolloClient({
@@ -15,9 +16,7 @@ const App = () => {
   });
 
   return (
-    <div
-      style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
-    >
+    <div className="app">
       <ApolloProvider client={client}>
         <Router>
           <Routes>

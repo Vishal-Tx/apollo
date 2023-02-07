@@ -1,6 +1,7 @@
 import React from "react";
 import { gql, useQuery } from "@apollo/client";
 import { Link } from "react-router-dom";
+import "../App.css";
 
 const FETCH_ALL_COUNTRY_NAME = gql`
   {
@@ -8,6 +9,7 @@ const FETCH_ALL_COUNTRY_NAME = gql`
       code
       name
       emoji
+      capital
     }
   }
 `;
@@ -16,7 +18,7 @@ const Home = () => {
   const { data, error, loading } = useQuery(FETCH_ALL_COUNTRY_NAME);
   console.log(data);
   return (
-    <>
+    <div className="home">
       {loading ? (
         <h1>Loading...</h1>
       ) : error ? (
@@ -25,14 +27,18 @@ const Home = () => {
         <>
           <h1>List of Countries</h1>
           <Link to="/search">Search</Link>
-          <ul>
-            {data?.countries.map((country) => (
-              <li key={country.code}>{country.name + country.emoji}</li>
-            ))}
-          </ul>
+
+          {data?.countries.map((country) => (
+            <div className="country-item">
+              <h2>
+                {country.name} {country.emoji}
+              </h2>
+              <h4>{country.capital}</h4>
+            </div>
+          ))}
         </>
       )}
-    </>
+    </div>
   );
 };
 
