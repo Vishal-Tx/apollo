@@ -1,7 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Info = () => {
-  return <div>Info</div>;
+  return (
+    <div>
+      Info
+      <Link to="/">Home</Link>
+    </div>
+  );
 };
 
 export default Info;

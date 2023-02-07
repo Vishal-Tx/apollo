@@ -15,7 +15,9 @@ const App = () => {
   });
 
   return (
-    <>
+    <div
+      style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+    >
       <ApolloProvider client={client}>
         <Router>
           <Routes>
@@ -24,7 +26,7 @@ const App = () => {
           </Routes>
         </Router>
       </ApolloProvider>
-    </>
+    </div>
   );
 };
 
