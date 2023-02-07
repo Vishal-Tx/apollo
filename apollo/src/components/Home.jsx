@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { gql, useQuery } from "@apollo/client";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../App.css";
 
 const FETCH_ALL_COUNTRY_NAME = gql`
@@ -17,7 +17,8 @@ const FETCH_ALL_COUNTRY_NAME = gql`
 const Home = () => {
   const { data, error, loading } = useQuery(FETCH_ALL_COUNTRY_NAME);
   const [localSearchTerm, setLocalSearchTerm] = useState("");
-  console.log(data);
+  const navigate = useNavigate();
+  // console.log(data);
 
   const filteredCountry = data?.countries.filter((country) => {
     const regex = new RegExp(localSearchTerm, "i");
@@ -25,6 +26,10 @@ const Home = () => {
   });
   const handleLocalSearch = (event) => {
     setLocalSearchTerm(event.target.value);
+  };
+
+  const handleClick = (code) => {
+    navigate(`/${code}`);
   };
   return (
     <div className="home">
@@ -44,7 +49,11 @@ const Home = () => {
             <h2>No Such Country. Please try again!</h2>
           )}
           {filteredCountry.map((country) => (
-            <div className="country-item" key={country.code}>
+            <div
+              className="country-item"
+              key={country.code}
+              onClick={() => handleClick(country.code)}
+            >
               <h2>
                 {country.name} {country.emoji}
               </h2>

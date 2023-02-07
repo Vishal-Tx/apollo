@@ -21,7 +21,7 @@ const App = () => {
         <Router>
           <Routes>
             <Route path="/" exact element={<Home />} />
-            <Route path="/search" exact element={<Info />} />
+            <Route path="/:search" exact element={<Info />} />
           </Routes>
         </Router>
       </ApolloProvider>
