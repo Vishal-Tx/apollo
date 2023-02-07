@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { gql, useQuery } from "@apollo/client";
 import { Link } from "react-router-dom";
 import "../App.css";
@@ -16,7 +16,16 @@ const FETCH_ALL_COUNTRY_NAME = gql`
 
 const Home = () => {
   const { data, error, loading } = useQuery(FETCH_ALL_COUNTRY_NAME);
+  const [localSearchTerm, setLocalSearchTerm] = useState("");
   console.log(data);
+
+  const filteredCountry = data?.countries.filter((country) => {
+    const regex = new RegExp(localSearchTerm, "i");
+    return regex.test(country.name);
+  });
+  const handleLocalSearch = (event) => {
+    setLocalSearchTerm(event.target.value);
+  };
   return (
     <div className="home">
       {loading ? (
@@ -25,11 +34,17 @@ const Home = () => {
         <h1>{error}</h1>
       ) : (
         <>
-          <h1>List of Countries</h1>
-          <Link to="/search">Search</Link>
+          <div className="navbar">
+            <h1>List of Countries</h1>
+          </div>
 
-          {data?.countries.map((country) => (
-            <div className="country-item">
+          <Link to="/search">Search</Link>
+          <input type="text" onChange={handleLocalSearch} />
+          {filteredCountry.length === 0 && (
+            <h2>No Such Country. Please try again!</h2>
+          )}
+          {filteredCountry.map((country) => (
+            <div className="country-item" key={country.code}>
               <h2>
                 {country.name} {country.emoji}
               </h2>
