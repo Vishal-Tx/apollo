@@ -34,7 +34,9 @@ const Info = () => {
       <Link to="/">Home</Link>
       {loading && <h1>Loading...</h1>}
       {error && <h1>Something went wrong</h1>}
-      <h1>{data?.country.name}</h1>
+      <div className="info-container">
+        <h1>{data?.country.name}</h1>
+      </div>
     </div>
   );
 };

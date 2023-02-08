@@ -47,18 +47,20 @@ const Home = () => {
           {filteredCountry.length === 0 && (
             <h2>No Such Country. Please try again!</h2>
           )}
-          {filteredCountry.map((country) => (
-            <div
-              className="country-item"
-              key={country.code}
-              onClick={() => handleClick(country.code)}
-            >
-              <h2>
-                {country.name} {country.emoji}
-              </h2>
-              <h4>{country.capital}</h4>
-            </div>
-          ))}
+          <div className="country-wrapper">
+            {filteredCountry.map((country) => (
+              <div
+                className="country-item"
+                key={country.code}
+                onClick={() => handleClick(country.code)}
+              >
+                <h2>
+                  {country.name} {country.emoji}
+                </h2>
+                <h4>{country.capital}</h4>
+              </div>
+            ))}
+          </div>
         </>
       )}
     </div>
