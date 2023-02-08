@@ -33,9 +33,11 @@ const Info = () => {
       <div className="navbar">
         <h1>Info</h1>
       </div>
-      <Link to="/" className="link-home">
-        Home
-      </Link>
+      <div className="link-home">
+        <Link to="/" style={{ textDecoration: "none" }}>
+          Home
+        </Link>
+      </div>
       <div className="info-container">
         {loading && <h1>Loading...</h1>}
         {error && <h1>Something went wrong</h1>}
