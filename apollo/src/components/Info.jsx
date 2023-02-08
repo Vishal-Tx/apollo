@@ -30,12 +30,34 @@ const Info = () => {
   // console.log("search", search);
   return (
     <div className="info">
-      Info
-      <Link to="/">Home</Link>
-      {loading && <h1>Loading...</h1>}
-      {error && <h1>Something went wrong</h1>}
+      <div className="navbar">
+        <h1>Info</h1>
+      </div>
+      <Link to="/" className="link-home">
+        Home
+      </Link>
       <div className="info-container">
-        <h1>{data?.country.name}</h1>
+        {loading && <h1>Loading...</h1>}
+        {error && <h1>Something went wrong</h1>}
+        {data && (
+          <>
+            <h1>
+              {data?.country.name} {data?.country.emoji}
+            </h1>
+            <h2>Native: {data?.country.native}</h2>
+            <h2>Capital: {data?.country.capital}</h2>
+
+            <h2>Currency: {data?.country.currency}</h2>
+            <ul>
+              <h2>Languages:</h2>
+              {data?.country.languages.map((language) => (
+                <li className="lang-item" key={language.code}>
+                  {language.name}
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
       </div>
     </div>
   );

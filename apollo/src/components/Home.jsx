@@ -42,8 +42,12 @@ const Home = () => {
         <h1>{error}</h1>
       ) : (
         <>
-          <Link to="/search">Search</Link>
-          <input type="text" onChange={handleLocalSearch} />
+          <input
+            type="text"
+            onChange={handleLocalSearch}
+            placeholder="search..."
+            className="search-box"
+          />
           {filteredCountry.length === 0 && (
             <h2>No Such Country. Please try again!</h2>
           )}

@@ -7,7 +7,20 @@
   word-wrap: break-word;
 }
 
-.info,
+.link-home {
+  font-size: 20px;
+  margin: 2000px 0;
+}
+
+.search-box {
+  margin: 15px;
+  font-size: 15px;
+  font-weight: 600;
+  height: 50px;
+  width: auto;
+}
+
+.info-container,
 .country-wrapper {
   display: flex;
   flex-direction: column;
@@ -15,7 +28,7 @@
   max-width: 800px;
   padding: 0 10px;
   gap: 20px;
-  margin: auto;
+  margin: 15px auto;
 }
 
 .country-item {
@@ -40,10 +53,16 @@
 .navbar {
   width: 100%;
   background-color: hwb(34 84% 2%);
+  padding: 15px 0;
 }
 
 .info-container {
-  background-color: aqua;
+  background-color: hwb(34 84% 2%);
   width: 100%;
-  margin: 50px;
+  padding: 50px;
+}
+
+.lang-item {
+  margin: 10px 0;
+  font-weight: 600;
 }
