@@ -33,16 +33,15 @@ const Home = () => {
   };
   return (
     <div className="home">
+      <div className="navbar">
+        <h1>List of Countries</h1>
+      </div>
       {loading ? (
         <h1>Loading...</h1>
       ) : error ? (
         <h1>{error}</h1>
       ) : (
         <>
-          <div className="navbar">
-            <h1>List of Countries</h1>
-          </div>
-
           <Link to="/search">Search</Link>
           <input type="text" onChange={handleLocalSearch} />
           {filteredCountry.length === 0 && (
